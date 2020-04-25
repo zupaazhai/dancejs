@@ -80,6 +80,8 @@ dance.step('Get_user', {
     'Display_to_list': (next, goto, data) => {
 
         document.getElementById('ul').innerHTML = data.map(user => `<li>${user.name}</li>`)
+        
+        goto('Push_notify_when_success')
     },
 
     'Display_not_found': () => {
