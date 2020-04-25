@@ -6,7 +6,7 @@ DanceJS :dancer: is alternative pattern to handle callback in Javascript, make y
 
 include `dance.js` in your code
 
-```
+```html
 <script src="dance.js">
 ```
 
