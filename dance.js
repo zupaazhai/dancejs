@@ -22,7 +22,6 @@ DanceJs.prototype = {
         if (!this.stacks[notation]) {
             
             this.stacks[notation] = {
-                current: 0,
                 steps: {}
             }
         }
