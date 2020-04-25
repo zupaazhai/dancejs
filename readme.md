@@ -11,7 +11,7 @@ include `dance.js` in your code
 <script src="dance.js">
 ```
 
-then let rooool!!! :microphone: :notes:
+then let rooooll!!! :microphone: :notes:
 
 ## How to use
 
