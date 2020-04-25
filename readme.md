@@ -94,10 +94,8 @@ dance.step('Get_user', {
 // then new step will push to previous defined step
 
 dance.step('Get_user', {
-    {
-        'Push_notify_when_success': () => {
-            alert('Done')
-        }
+    'Push_notify_when_success': () => {
+        alert('Done')
     }
 })
 
