@@ -17,6 +17,9 @@ then let rooool!!! :microphone: :notes:
 ```javascript
 var dance = new Dance
 
+// Define notation name "Gangnam_style"
+// and set step "Cross_hands", "Raise_left_leg", "Raise_right_leg" and "End"
+
 dance.step('Gangnam_style', {
 
     'Cross_hands': (next) => {
@@ -96,8 +99,8 @@ dance.step('Get_user', {
     }
 })
 
-// We can push extra step by call define same step name,
-// then new step will push to previous defined step
+// We can push extra step by define same notation name,
+// then new step will push to previous defined notation
 
 dance.step('Get_user', {
     'Push_notify_when_success': () => {
