@@ -31,7 +31,7 @@
 
             'Display_to_list': (next, data) => {
 
-                document.getElementById('list').innerHTML = data.map(user => `<li>${user.name}</li>`)
+                document.getElementById('list').innerHTML = data.map(user => `<li>${user.name}</li>`).join('')
                 
                 next('Push_notify_when_success')
             },
