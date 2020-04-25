@@ -48,7 +48,7 @@ DanceJs.prototype = {
 
             if (typeof this.stacks[notation].steps[targetStep] == 'function') {
                 this.stacks[notation].current = notationNames.indexOf(targetStep)
-                return this.stacks[notation].steps[targetStep](next, goto, )
+                return this.stacks[notation].steps[targetStep](next, goto, data)
             }
             
             return

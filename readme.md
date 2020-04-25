@@ -57,6 +57,7 @@ Making function to load user and process user data
 ```javascript
 
 dance.step('Get_user', {
+    
     'Fetch_from_API': (next, goto) => {
 
         request.get('http://user.api/users')

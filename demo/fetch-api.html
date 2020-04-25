@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+
+    <ul id="list"></ul>
+    <div id="output"></div>
+    
+    <script src="../dance.js"></script>
+    <script>
+
+        const dance = new DanceJs
+        
+        dance.step('Get_user', {
+    
+            'Fetch_from_API': (next, goto) => {
+                
+                fetch('https://jsonplaceholder.typicode.com/users')
+                    .then(res => {
+                        return res.json()
+                    })
+                    .then(data => {
+                        goto('Display_to_list', data)
+                    })
+                    .catch()
+            },
+
+            'Display_to_list': (next, goto, data) => {
+
+                document.getElementById('list').innerHTML = data.map(user => `<li>${user.name}</li>`)
+                
+                goto('Push_notify_when_success')
+            },
+
+            'Display_not_found': () => {
+
+                document.getElementById('output').innerText = 'Sorry, user not found'
+            }
+        })
+
+        dance.step('Get_user', {
+            'Push_notify_when_success': () => {
+                alert('Get user done')
+            } 
+        })
+
+        dance.letRoll('Get_user')
+
+    </script>
+</body>
+</html>
