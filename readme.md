@@ -26,13 +26,15 @@ dance.step('Gangnam_style', {
     },
 
     'Raise_left_leg': (next, goto, data) => {
-        
+        ...
+
         next({
             foo: bar
         })
     },
 
     'Raise_right_leg': (next, goto, data) => {
+        ...
 
         next()
     },
@@ -46,4 +48,34 @@ dance.step('Gangnam_style', {
 
 dance.letRoll('Gangnam_style')
 
+```
+
+## Example
+
+Making function to load user and process user data
+
+```javascript
+
+dance.step('Get_user', {
+    'Load': (next) => {
+        request.get('http://user.api/users')
+            .then(res => {
+                next(res.users)
+            })
+    },
+
+    'Filter': (next, goto, data) => {
+        
+        let userWhoIsActive = data.filter(user => {
+            return user.is_active
+        })
+
+        next(userWhoIsActive)
+    },
+
+    'Display_to_list': (next, goto, data) {
+        
+        document.getElementById('ul').innerHTML = data.map(user => `<li>${user.name}</li>`)
+    }
+})
 ```
