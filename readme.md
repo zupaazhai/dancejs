@@ -45,8 +45,13 @@ dance.step('Gangnam_style', {
 })
 
 // Dont forgot to call .letRoll
+// First step that defined will run at first, in this case "Cross_hands" will run.
 
 dance.letRoll('Gangnam_style')
+
+// IF we need to specify which step will run first jusf add second parameter of letRoll()
+
+dance.letRoll('Gangnam_style', 'Raise_left_leg')
 
 ```
 
