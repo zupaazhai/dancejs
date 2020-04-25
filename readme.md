@@ -90,7 +90,7 @@ dance.step('Get_user', {
     }
 })
 
-// We can another push extra step by
+// We can push extra step by call define same step name,
 // then new step will push to previous defined step
 
 dance.step('Get_user', {
