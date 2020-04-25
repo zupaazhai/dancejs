@@ -4,7 +4,7 @@ DanceJS :dancer: is alternative pattern to handle callback Javascript, make your
 
 ## How to install
 
-call `dance.js` in your code
+include `dance.js` in your code
 
 ```
 <script src="dance.js">
