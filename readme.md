@@ -57,10 +57,14 @@ Making function to load user and process user data
 ```javascript
 
 dance.step('Get_user', {
-    'Fetch_from_API': (next) => {
+    'Fetch_from_API': (next, goto) => {
+        
         request.get('http://user.api/users')
             .then(res => {
-                next(res.users)
+                goto('Filter', res.users)
+            })
+            .catch(() => {
+                goto('Display_not_found')
             })
     },
 
@@ -70,12 +74,19 @@ dance.step('Get_user', {
             return user.is_active
         })
 
-        next(userWhoIsActive)
+        goto('Display_to_list', userWhoIsActive)
     },
 
-    'Display_to_list': (next, goto, data) {
-        
+    'Display_to_list': (next, goto, data) => {
+
         document.getElementById('ul').innerHTML = data.map(user => `<li>${user.name}</li>`)
+    },
+
+    'Display_not_found': () => {
+
+        document.getElementById('output').innerText = 'Sorry, user not found'
     }
 })
+
+dance.letRoll('Get_user')
 ```
