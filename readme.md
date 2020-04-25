@@ -14,29 +14,30 @@ then let rooool!!! :microphone: :notes:
 
 ## How to use
 
-```
+```javascript
 var dance = new Dance
 
 dance.step('Gangnam_style', {
-    'Cross_hands': function (next, goto) {
+
+    'Cross_hands': (next, goto) => {
         ...
         
         next()
     },
 
-    'Raise_left_leg': function (next, goto, data) {
+    'Raise_left_leg': (next, goto, data) => {
         
         next({
             foo: bar
         })
     },
 
-    'Raise_right_leg': function (next, goto, data) {
+    'Raise_right_leg': (next, goto, data) => {
 
         next()
     },
 
-    'End': function (next, goto) {
+    'End': (next, goto) => {
         goto('Cross_hands')
     }
 })
