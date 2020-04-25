@@ -42,4 +42,8 @@ dance.step('Gangnam_style', {
     }
 })
 
+// Dont forgot to call .letRoll
+
+dance.letRoll('Gangnam_style')
+
 ```
