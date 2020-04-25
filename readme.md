@@ -58,7 +58,7 @@ Making function to load user and process user data
 
 dance.step('Get_user', {
     'Fetch_from_API': (next, goto) => {
-        
+
         request.get('http://user.api/users')
             .then(res => {
                 goto('Filter', res.users)
@@ -85,6 +85,17 @@ dance.step('Get_user', {
     'Display_not_found': () => {
 
         document.getElementById('output').innerText = 'Sorry, user not found'
+    }
+})
+
+// We can another push extra step by
+// then new step will push to previous defined step
+
+dance.step('Get_user', {
+    {
+        'Push_notify_when_success': () => {
+            alert('Done')
+        }
     }
 })
 
