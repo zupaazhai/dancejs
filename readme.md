@@ -1,6 +1,6 @@
 ## DanceJS
 
-DanceJS :dancer: is alternative pattern to handle callback Javascript, make your code is easy to read and organize to your mind for coding.
+DanceJS :dancer: is alternative pattern to handle callback in Javascript, make your code is easy to read and organize your mind for coding.
 
 ## How to install
 
