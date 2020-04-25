@@ -38,7 +38,7 @@
                 
                 timerInput.innerText = 5
 
-                next()
+                next('Counting')
             },
 
             'Counting': function (next, goto) {
@@ -49,10 +49,10 @@
 
                     if (timerInput.innerText == 0) {
                         clearTimeout(timer)
-                        return goto('Timeout')
+                        return next('Timeout')
                     }
                     
-                    goto('Counting')
+                    next('Counting')
                 }, 1000)
             },
             

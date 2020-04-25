@@ -17,23 +17,23 @@
         
         dance.step('Get_user', {
     
-            'Fetch_from_API': (next, goto) => {
+            'Fetch_from_API': (next, data) => {
                 
                 fetch('https://jsonplaceholder.typicode.com/users')
                     .then(res => {
                         return res.json()
                     })
                     .then(data => {
-                        goto('Display_to_list', data)
+                        next('Display_to_list', data)
                     })
                     .catch()
             },
 
-            'Display_to_list': (next, goto, data) => {
+            'Display_to_list': (next, data) => {
 
                 document.getElementById('list').innerHTML = data.map(user => `<li>${user.name}</li>`)
                 
-                goto('Push_notify_when_success')
+                next('Push_notify_when_success')
             },
 
             'Display_not_found': () => {

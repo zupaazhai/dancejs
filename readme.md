@@ -19,28 +19,28 @@ var dance = new Dance
 
 dance.step('Gangnam_style', {
 
-    'Cross_hands': (next, goto) => {
+    'Cross_hands': (next) => {
         ...
         
-        next()
+        next('Raise_left_leg')
     },
 
-    'Raise_left_leg': (next, goto, data) => {
+    'Raise_left_leg': (next, data) => {
         ...
 
-        next({
+        next('Raise_right_leg', {
             foo: bar
         })
     },
 
-    'Raise_right_leg': (next, goto, data) => {
+    'Raise_right_leg': (next, data) => {
         ...
 
-        next()
+        next('End')
     },
 
-    'End': (next, goto) => {
-        goto('Cross_hands')
+    'End': (next) => {
+        next('Cross_hands')
     }
 })
 
@@ -58,31 +58,31 @@ Making function to load user and process user data
 
 dance.step('Get_user', {
 
-    'Fetch_from_API': (next, goto) => {
+    'Fetch_from_API': (next) => {
 
         request.get('http://user.api/users')
             .then(res => {
-                goto('Filter', res.users)
+                next('Filter', res.users)
             })
             .catch(() => {
-                goto('Display_not_found')
+                next('Display_not_found')
             })
     },
 
-    'Filter': (next, goto, data) => {
+    'Filter': (next, data) => {
         
         let userWhoIsActive = data.filter(user => {
             return user.is_active
         })
 
-        goto('Display_to_list', userWhoIsActive)
+        next('Display_to_list', userWhoIsActive)
     },
 
-    'Display_to_list': (next, goto, data) => {
+    'Display_to_list': (next, data) => {
 
         document.getElementById('ul').innerHTML = data.map(user => `<li>${user.name}</li>`)
         
-        goto('Push_notify_when_success')
+        next('Push_notify_when_success')
     },
 
     'Display_not_found': () => {

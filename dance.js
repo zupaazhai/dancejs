@@ -36,7 +36,7 @@ DanceJs.prototype = {
         return this
     },
 
-    letRoll: function (notation) {
+    letRoll: function (notation, firstRun) {
         
         if (!this.stacks[notation]) {
             return this.err('No ' + notation + ' name, please add step by step([step name], [steps])')
@@ -44,21 +44,21 @@ DanceJs.prototype = {
 
         var notationNames = Object.keys(this.stacks[notation].steps)
 
-        var goto = function (targetStep, data) {
+        var next = function (nextStepName, data) {
 
-            if (typeof this.stacks[notation].steps[targetStep] == 'function') {
-                this.stacks[notation].current = notationNames.indexOf(targetStep)
-                return this.stacks[notation].steps[targetStep](next, goto, data)
+            var nextStep = this.stacks[notation].steps[nextStepName]
+
+            if (typeof nextStep !== 'function') {
+                return
             }
-            
-            return
+
+            this.stacks[notation].steps[nextStepName](next, data)
         }.bind(this)
 
-        var next = function (data) {
-            this.stacks[notation].current++
-            this.stacks[notation].steps[notationNames[this.stacks[notation].current]](next, goto, data)
-        }.bind(this)
+        if (this.stacks[notation].steps[firstRun] == 'string') {
+            return this.stacks[notation].steps[firstRun](next)
+        }
 
-        this.stacks[notation].steps[notationNames[0]](next, goto)
+        this.stacks[notation].steps[notationNames[0]](next)
     }
 }
