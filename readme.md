@@ -10,4 +10,4 @@ call `dance.js` in your code
 <script src="dance.js">
 ```
 
-then let rooool!!!
+then let rooool!!! :microphone: :notes:
